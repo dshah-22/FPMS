@@ -1,6 +1,8 @@
 package com.fpms.login.controller;
 
+import com.fpms.login.entities.Login;
 import com.fpms.login.entities.User;
+import com.fpms.login.payload.response.LoginMessage;
 import com.fpms.login.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,8 +32,6 @@ public class UserController {
 
     @PostMapping("/users")
     public User addUser(@RequestBody User user){
-        System.out.println(user.getEmailId());
-        System.out.println(user.getName());
         return this.userService.addUser(user);
     }
 
@@ -48,5 +48,11 @@ public class UserController {
         }catch(Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginEmployee(@RequestBody Login login){
+        LoginMessage loginMessage = userService.loginEmployee(login);
+        return ResponseEntity.ok(loginMessage);
     }
 }

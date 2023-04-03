@@ -9,21 +9,24 @@ import java.sql.Date;
 public class PersonalDets {
     @Id
     private String emailId;
-    private String name,designation,address,bloodGrp,gender;
+    private String name,address,bloodGrp,gender,indusExp,teachExp;
     Date dob;
+    private long contact;
 
     public PersonalDets(){
         super();
     }
 
-    public PersonalDets(String emailId, String name, String designation, String address, String bloodGrp, String gender, Date dob) {
+    public PersonalDets(String emailId, String name, String address, String bloodGrp, String gender, String indusExp, String teachExp, Date dob, long contact) {
         this.emailId = emailId;
         this.name = name;
-        this.designation = designation;
         this.address = address;
         this.bloodGrp = bloodGrp;
         this.gender = gender;
+        this.indusExp = indusExp;
+        this.teachExp = teachExp;
         this.dob = dob;
+        this.contact = contact;
     }
 
     public String getEmailId() {
@@ -40,14 +43,6 @@ public class PersonalDets {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDesignation() {
-        return designation;
-    }
-
-    public void setDesignation(String designation) {
-        this.designation = designation;
     }
 
     public String getAddress() {
@@ -82,16 +77,42 @@ public class PersonalDets {
         this.dob = dob;
     }
 
+    public String getIndusExp() {
+        return indusExp;
+    }
+
+    public void setIndusExp(String indusExp) {
+        this.indusExp = indusExp;
+    }
+
+    public String getTeachExp() {
+        return teachExp;
+    }
+
+    public void setTeachExp(String teachExp) {
+        this.teachExp = teachExp;
+    }
+
+    public long getContact() {
+        return contact;
+    }
+
+    public void setContact(long contact) {
+        this.contact = contact;
+    }
+
     @Override
     public String toString() {
         return "PersonalDets{" +
                 "emailId='" + emailId + '\'' +
                 ", name='" + name + '\'' +
-                ", designation='" + designation + '\'' +
                 ", address='" + address + '\'' +
                 ", bloodGrp='" + bloodGrp + '\'' +
                 ", gender='" + gender + '\'' +
+                ", indusExp='" + indusExp + '\'' +
+                ", teachExp='" + teachExp + '\'' +
                 ", dob=" + dob +
+                ", contact=" + contact +
                 '}';
     }
 }

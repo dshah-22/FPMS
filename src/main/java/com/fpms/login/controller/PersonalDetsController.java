@@ -1,5 +1,6 @@
 package com.fpms.login.controller;
 
+import com.fpms.login.entities.EducationalDets;
 import com.fpms.login.entities.PersonalDets;
 import com.fpms.login.services.PersonalDetsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ import java.util.List;
 public class PersonalDetsController {
     @Autowired
     private PersonalDetsService personalDetsService;
+
+    @Autowired
+    private EducationalDets educationalDets;
 
     @GetMapping("/personalDets")
     public List<PersonalDets> getPersonalDets(){
@@ -50,6 +54,38 @@ public class PersonalDetsController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+//    @GetMapping("/eduDets")
+//    public List<EducationalDets> getEducationalDets(){
+//        return this.educationalDets.getPersonalDets();
+//    }
+//
+//    @GetMapping("/personalDets/{email}")
+//    public PersonalDets getPersonalDets(@PathVariable String email){
+//        return this.personalDetsService.getPersonalDets(email);
+//    }
+//
+//    @PostMapping("/personalDets")
+//    public PersonalDets addPersonalDets(@RequestBody PersonalDets user){
+//        System.out.println(user.getEmailId());
+//        System.out.println(user.getName());
+//        return this.personalDetsService.addPersonalDets(user);
+//    }
+//
+//    @PutMapping("/personalDets")
+//    public PersonalDets updatePersonalDets(@RequestBody PersonalDets user){
+//        return this.personalDetsService.updatePersonalDets(user);
+//    }
+//
+//    @DeleteMapping("/personalDets/{email}")
+//    public ResponseEntity<HttpStatus> deletePersonalDets(@PathVariable String email){
+//        try{
+//            this.personalDetsService.deletePersonalDets(email);
+//            return new ResponseEntity<>(HttpStatus.OK);
+//        }catch(Exception e){
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
     @RequestMapping("/excel")
     public ResponseEntity<Resource> download(){
